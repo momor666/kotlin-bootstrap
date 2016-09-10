@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="AppTheme.Red" parent="AppTheme.Base">
+        <item name="android:statusBarColor">@color/secondary</item>
+    </style>
+</resources>
