@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Kotlin Bootstrap</string>
+
+    <!-- Navigation Items -->
+    <string name="screen_1">Screen One</string>
+    <string name="screen_2">Screen Two</string>
+    <string name="screen_3">Screen Three</string>
+
+    <string name="dismiss">Dismiss</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+</resources>

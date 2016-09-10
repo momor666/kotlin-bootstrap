@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/navigation_primary"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/screen_1"
+            android:title="@string/screen_1" />
+
+        <item
+            android:id="@+id/screen_2"
+            android:title="@string/screen_2" />
+
+        <item
+            android:id="@+id/screen_3"
+            android:title="@string/screen_3" />
+
+    </group>
+</menu>
