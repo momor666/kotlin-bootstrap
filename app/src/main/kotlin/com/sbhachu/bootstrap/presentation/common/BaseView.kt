@@ -30,7 +30,7 @@ abstract class BaseView<T : BasePresenter<*>> : LinearLayout {
     protected abstract fun initialiseViews(view: View?): Unit
     protected abstract fun initialiseListeners(): Unit
 
-    fun onDestroy() {
+    open fun onDestroy() {
         presenter?.dispose()
         presenter = null
     }

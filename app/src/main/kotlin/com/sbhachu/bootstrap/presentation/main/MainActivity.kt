@@ -5,13 +5,12 @@ import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import com.sbhachu.bootstrap.R
 import com.sbhachu.bootstrap.presentation.common.BaseActivity
+import com.sbhachu.bootstrap.presentation.common.view.map.MapView
 
 
 class MainActivity : BaseActivity<MainPresenter>(), IMainViewContract, NavigationView.OnNavigationItemSelectedListener {
@@ -23,12 +22,13 @@ class MainActivity : BaseActivity<MainPresenter>(), IMainViewContract, Navigatio
     private var navigationView: NavigationView? = null
     private var drawerLayout: DrawerLayout? = null
     private var toolbar: Toolbar? = null
+    private var mapView: MapView? = null
 
     override fun initialisePresenter(): MainPresenter {
         return MainPresenter(this)
     }
 
-    override fun initialiseViews(): Unit {
+    override fun initialiseViews(savedInstanceState: Bundle?): Unit {
         Log.d(TAG, "initialiseViews()")
 
         navigationView = findViewById(R.id.navigation_view) as NavigationView?
@@ -38,6 +38,9 @@ class MainActivity : BaseActivity<MainPresenter>(), IMainViewContract, Navigatio
 
         supportActionBar?.setTitle(R.string.app_name)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        mapView = findViewById(R.id.map_view) as MapView?
+        mapView?.onCreate(savedInstanceState)
     }
 
     override fun initialiseListeners(): Unit {
@@ -63,12 +66,37 @@ class MainActivity : BaseActivity<MainPresenter>(), IMainViewContract, Navigatio
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId) {
+        when (item?.itemId) {
             android.R.id.home -> {
                 drawerLayout?.openDrawer(GravityCompat.START)
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView?.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView?.onPause()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView?.onLowMemory()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        mapView?.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroy() {
+        mapView?.onDestroy()
+        super.onDestroy()
     }
 }

@@ -30,7 +30,7 @@ abstract class BaseActivity<T : BasePresenter<*>> : AppCompatActivity() {
     }
 
     protected abstract fun initialisePresenter(): T
-    protected abstract fun initialiseViews(): Unit
+    protected abstract fun initialiseViews(savedInstanceState: Bundle?): Unit
     protected abstract fun initialiseListeners(): Unit
     protected abstract fun handleExtras(bundle: Bundle?): Unit
 
@@ -42,7 +42,7 @@ abstract class BaseActivity<T : BasePresenter<*>> : AppCompatActivity() {
 
         snackbarContainer = findViewById(R.id.snackbar_container) as LinearLayout?
 
-        initialiseViews()
+        initialiseViews(savedInstanceState)
         initialiseListeners()
     }
 

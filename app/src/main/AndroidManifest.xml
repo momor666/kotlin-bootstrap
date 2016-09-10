@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBxR7yGYN2xTLgpGWdHt7meRivQct6OBzQ" />
+
         <activity
             android:name=".presentation.main.MainActivity"
             android:screenOrientation="portrait">
